@@ -8,6 +8,10 @@ unzip /root/keycod.zip
 chmod -R 755 /root/keycod
 chmod -R 755 /root/keyco-cli
 mkdir /root/.keyco
+crontab -l > tempcron
+echo "@reboot sleep 30 && /usr/local/bin/keycod -daemon" >> tempcron
+crontab tempcron
+rm tempcron
 cp /root/keycod /usr/local/bin/
 cp /root/keyco-cli /usr/local/bin/
 chmod -R 755 /root/.keyco
